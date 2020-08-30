@@ -1,0 +1,18 @@
+<network>
+  <name>lookoutNw</name>
+  <uuid>41dda2dc-d743-41df-be71-44894d605ea4</uuid>
+  <forward dev="lookout-link" mode="nat">
+    <nat>
+      <port start="1024" end="65535"/>
+    </nat>
+    <interface dev="lookout-link"/>
+  </forward>
+  <bridge name="virbr0" stp="on" delay="0"/>
+  <mac address="52:54:00:93:61:b8"/>
+  <domain name="lookoutNw"/>
+  <ip address="192.168.100.1" netmask="255.255.255.0">
+    <dhcp>
+      <range start="192.168.100.128" end="192.168.100.254"/>
+    </dhcp>
+  </ip>
+</network>
