@@ -6,14 +6,15 @@ import PackageDescription
 let package = Package(
     name: "baikonur",
     dependencies: [
-        .package(url: "https://github.com/vapor/vapor.git", from: "4.29.1"),
+        .package(url: "https://github.com/val-verde/vapor.git", .branch("dutch-master")),
     ],
     targets: [
         .target(name: "baikonur", dependencies: [
             .product(name: "Vapor", package: "vapor"),
         ]),
-        .testTarget(
-            name: "baikonurTests",
-            dependencies: ["baikonur"]),
+        .testTarget(name: "baikonurTests", dependencies: [
+            .target(name: "baikonur"),
+            .product(name: "XCTVapor", package: "vapor"),    
+        ])
     ]
 )

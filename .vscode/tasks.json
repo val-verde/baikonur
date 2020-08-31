@@ -11,6 +11,13 @@
             "problemMatcher": []
         },
         {
+            "label": "swift package update",
+            "type": "shell",
+            "command": "swift package update",
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
             "label": "swift run",
             "type": "shell",
             "command": "swift run",
