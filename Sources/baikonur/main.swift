@@ -1,7 +1,7 @@
 import Vapor
 
 public func configure(_ app: Application) throws {
-    app.http.server.configuration.port = 8080
+    app.http.server.configuration.port = 443
     try routes(app)
 }
 

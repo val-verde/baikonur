@@ -27,7 +27,6 @@ $ sudo bash -c 'echo "deb http://archive.ubuntu.com/ubuntu focal main multiverse
 ## Running Baikonur as a container
 
 1. To deploy use machinectl to start the container: `machinectl start <container-name>`
-
 1. Copy over val-verde source deb packages: `machinectl copy-to <name> /path/to/host/dir /root/path/to/<name>/destination/dir`
 Note: Remove the following packages: 
 `val-verde-libunwind-gnu-haswell.deb 
@@ -51,14 +50,13 @@ $ dpkg -i /*.deb
 
 1. Set up the nspawn service on the host `systemd-nspawn@<name>`:
 ```
-echo cat >> EOF
+$ echo cat >> EOF
 [Exec]
 PrivateUsers=pick
 
 [Network]
 Zone=<name>
 Port=tcp:443
-Port=tcp:8080
 
 [Files]
 PrivateUsersChown=yes
@@ -66,8 +64,7 @@ EOF
 $ sudo systemctl enable systemd-nspawn@<name>
 
 ```
-
-1. Set up environment for the swift app:
+2. Set up environment for the swift app:
 
 ```
 $ export PACKAGE_PREFIX=/usr/local/val-verde-platform-sdk-gnu-haswell/sysroot
@@ -76,16 +73,14 @@ $ export PATH=$PATH:/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin
 $ export LD_LIBRARY_PATH=${PACKAGE_PREFIX}/usr/lib:${PACKAGE_PREFIX}/usr/lib/swift/linux
 $ export GIT_EXEC_PATH=${PACKAGE_PREFIX}/usr/libexec/git-core
 ```
-
-1. Fetch Baikonur source code
+3. Fetch Baikonur source code
 
 ```
 $ mkdir /root/projects
 $ cd /root/projects
 $ git clone https://github.com/val-verde/baikonur.git --branch master --single-branch .
 ```
-
-1. Build & run the vapor server:
+4. Build & run the vapor server:
 
 ```
 $ swift build -Xswiftc -I/usr/local/val-verde-platform-sdk-gnu-haswell/sysroot/usr/include
