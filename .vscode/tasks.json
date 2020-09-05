@@ -1,0 +1,32 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "swift build",
+            "type": "shell",
+            "command": "swift build",
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "swift package update",
+            "type": "shell",
+            "command": "swift package update",
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "swift run",
+            "type": "shell",
+            "command": "swift run",
+            "problemMatcher": []
+        },
+        {
+            "label": "swift test",
+            "type": "shell",
+            "command": "swift test",
+            "group": "test",
+            "problemMatcher": []
+         }
+    ]
+}
