@@ -20,6 +20,8 @@ $ sudo bash -c 'echo "nameserver 8.8.8.8" >> /var/lib/machines/<name>/etc/resolv
 $ sudo bash -c 'echo "pts/0" >> /var/lib/machines/<name>/etc/securetty'
 $ rm /var/lib/machines/<name>/etc/securetty
 $ sudo bash -c 'echo "net.ip4.forward = 1" >> /var/lib/machines/<name>/etc/sysctl.d/ip_forward.conf'
+$ sudo bash -c 'echo "deb http://archive.ubuntu.com/ubuntu focal main multiverse universe restricted
+" >> /var/lib/machines/<name>/etc/apt/sources.list'
 ```
 
 ## Running Baikonur as a container
@@ -38,10 +40,10 @@ val-verde-libcxxabi-mingw32-haswell.deb`
 1. Install the dependencies:
 
 ```
-$ apt update \
-$ apt upgrade -y \
-$ apt install -y libatomic1 libc6-dev libedit2 libmpfr6 libnvidia-compute-440 \
-$ cd /root/path/to/<name>/destination/dir \
+$ apt update
+$ apt upgrade -y
+$ apt install -y libatomic1 libc6-dev libedit2 libmpfr6 libnvidia-compute-440
+$ cd /root/path/to/<name>/destination/dir
 $ dpkg -i /*.deb
 ```
 
@@ -60,8 +62,8 @@ Port=tcp:8080
 
 [Files]
 PrivateUsersChown=yes
-EOF \
-&& sudo systemctl enable systemd-nspawn@<name>
+EOF
+$ sudo systemctl enable systemd-nspawn@<name>
 
 ```
 
@@ -69,7 +71,8 @@ EOF \
 
 ```
 $ export PACKAGE_PREFIX=/usr/local/val-verde-platform-sdk-gnu-haswell/sysroot
-$ export PATH=${PACKAGE_PREFIX}/usr/bin:${PACKAGE_PREFIX}/usr/sbin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin
+$ export PATH=${PACKAGE_PREFIX}/usr/bin:${PACKAGE_PREFIX}/usr/sbin
+$ export PATH=$PATH:/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin
 $ export LD_LIBRARY_PATH=${PACKAGE_PREFIX}/usr/lib:${PACKAGE_PREFIX}/usr/lib/swift/linux
 $ export GIT_EXEC_PATH=${PACKAGE_PREFIX}/usr/libexec/git-core
 ```
