@@ -1,12 +1,10 @@
 import Vapor
 
-/// Called before your application initializes.
 public func configure(_ app: Application) throws {
-    app.http.server.configuration.port = 8888
+    app.http.server.configuration.port = 8080
     try routes(app)
 }
 
-/// Register your application's routes here.
 public func routes(_ app: Application) throws {
     app.get { req in
         return "Hello, world!"
