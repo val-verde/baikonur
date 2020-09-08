@@ -18,6 +18,7 @@ let package = Package(
     targets: [
         .target(name: "baikonur", dependencies: [
             .product(name: "Vapor", package: "vapor"),
+            .product(name: "ArgumentParser", package: "swift-argument-parser"),
         ]),
         .testTarget(name: "baikonurTests", dependencies: [
             .target(name: "baikonur"),
