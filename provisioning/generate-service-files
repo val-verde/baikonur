@@ -1,0 +1,14 @@
+#!/bin/bash
+
+SITE_DIR=${SITE_DIR:='${HOME}/site'}
+PORT=${PORT:='7777'}
+IP=${IP:='127.0.0.1'}
+STAGE_ROOT=${STAGE_ROOT:='./'}
+SOURCE_ROOT=${SOURCE_ROOT:='./'}
+
+sed "s|SITE_DIR|${SITE_DIR}|g; \
+     s|PORT|${PORT}|g; \
+     s|IP|${IP}|g" ${SOURCE_ROOT}/baikonur.service.in > ${STAGE_ROOT}/baikonur.service
+sed "s|SITE_DIR|${SITE_DIR}|g; \
+     s|PORT|${PORT}|g; \
+     s|IP|${IP}|g" ${SOURCE_ROOT}/baikonur.socket.in > ${STAGE_ROOT}/baikonur.socket

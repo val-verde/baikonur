@@ -1,0 +1,10 @@
+[Unit]
+Description=Socket for baikonur connections
+PartOf=baikonur.service
+
+[Socket]
+ListenStream=IP:PORT
+Accept=true
+
+[Install]
+WantedBy=sockets.target
