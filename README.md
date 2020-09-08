@@ -96,7 +96,7 @@ $ swift run
 
 This is a work in progress section to help in setting up baikonur as a systemd enabled service on linux.
 
-1. Run the script `provisioning/generateServiceFiles` to generate baikonur systemd files which can be set up in the VM. This enables baikonur service to run on start up upon buliding and installing baikonur deb package.
+1. Run the script `provisioning/generate-service-files` to generate baikonur systemd files which can be set up in the VM. This enables baikonur service to run on start up upon buliding and installing baikonur deb package.
 
 ## References:
 

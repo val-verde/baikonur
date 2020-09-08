@@ -1,0 +1,12 @@
+#!/bin/bash
+
+HOME_DIR=${HOME_DIR:='/root/app'}
+PORT=${PORT:='7777'}
+IP=${IP:='127.0.0.1'}
+
+sed "s|HOME_DIR|$HOME_DIR|g; \
+     s|PORT|$PORT|g; \
+     s|IP|$IP|g" baikonur.service.in > baikonur.service
+sed "s|HOME_DIR|$HOME_DIR|g; \
+     s|PORT|$PORT|g; \
+     s|IP|$IP|g" baikonur.socket.in > baikonur.socket
