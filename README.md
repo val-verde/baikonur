@@ -84,13 +84,19 @@ $ git clone https://github.com/val-verde/baikonur.git --branch master --single-b
 
 ```
 $ swift build -Xswiftc -I/usr/local/val-verde-platform-sdk-gnu-haswell/sysroot/usr/include
-$ swift run
+$ ./build/debug/baikonur --port=<CUSTOM_PORT>
 ```
 
 ## Run the web server
 
 1. Install nginx server to forward the ports 80 to 8080 - the default port for the web server
 1. Navigate to the IPv4 of the container `machinectl list <name> -l` on the browser for a successful image
+
+## Provisioning
+
+This is a work in progress section to help in setting up baikonur as a systemd enabled service on linux.
+
+1. Run the script `provisioning/generate-service-files` to generate baikonur systemd files which can be set up in the VM. This enables baikonur service to run on start up upon buliding and installing baikonur deb package.
 
 ## References:
 
@@ -102,5 +108,5 @@ $ swift run
 ## Todo:
 
 1. Consolidate build of baikonur as a deb package
-1. Store sources in talam
+1. Store sources in dropbox
 1. Update the https end point by setting up openssl certs

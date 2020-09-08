@@ -1,0 +1,12 @@
+[Unit]
+Description=Baikonur build central service
+After=network.target baikonur.socket
+Requires=baikonur.socket
+
+[Service]
+WorkingDirectory=SITE_DIR
+Type=Forking
+ExecStart=baikonur --port=PORT
+
+[Install]
+WantedBy=multi-user.target
