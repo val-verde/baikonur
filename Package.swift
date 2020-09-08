@@ -14,7 +14,7 @@ let package = Package(
         ]),
         .testTarget(name: "baikonurTests", dependencies: [
             .target(name: "baikonur"),
-            .product(name: "XCTVapor", package: "vapor"),    
+            .product(name: "XCTVapor", package: "vapor"),
         ])
     ]
 )
