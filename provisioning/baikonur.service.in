@@ -4,7 +4,7 @@ After=network.target baikonur.socket
 Requires=baikonur.socket
 
 [Service]
-WorkingDirectory=HOME_DIR
+WorkingDirectory=SITE_DIR
 Type=Forking
 ExecStart=baikonur --port=PORT
 
