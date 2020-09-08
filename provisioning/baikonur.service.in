@@ -6,7 +6,7 @@ Requires=baikonur.socket
 [Service]
 WorkingDirectory=HOME_DIR
 Type=Forking
-ExecStart=baikonur
+ExecStart=baikonur --port=PORT
 
 [Install]
 WantedBy=multi-user.target

@@ -84,7 +84,7 @@ $ git clone https://github.com/val-verde/baikonur.git --branch master --single-b
 
 ```
 $ swift build -Xswiftc -I/usr/local/val-verde-platform-sdk-gnu-haswell/sysroot/usr/include
-$ swift run
+$ ./build/debug/baikonur --port=<CUSTOM_PORT>
 ```
 
 ## Run the web server
