@@ -5,3 +5,5 @@ Package.resolved
 /*.xcodeproj
 xcuserdata/
 .deb
+**/*.service
+**/*.socket

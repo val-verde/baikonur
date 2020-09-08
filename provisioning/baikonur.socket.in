@@ -3,7 +3,7 @@ Description=Socket for baikonur connections
 PartOf=baikonur.service
 
 [Socket]
-ListenStream=127.0.0.1:7777
+ListenStream=IP:PORT
 Accept=true
 
 [Install]
