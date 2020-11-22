@@ -2,7 +2,7 @@
 
 SITE_DIR=${SITE_DIR:='${HOME}/site'}
 PORT=${PORT:='7777'}
-IP=${IP:='127.0.0.1'}
+IP=${IP:='0.0.0.0'}
 STAGE_ROOT=${STAGE_ROOT:='./'}
 SOURCE_ROOT=${SOURCE_ROOT:='./'}
 

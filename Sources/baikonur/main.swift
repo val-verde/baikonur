@@ -5,9 +5,20 @@ import Vapor
 internal typealias Option = ArgumentParser.Option
 
 internal struct ServerSessionState: ParsableCommand {
+    static private var _serverHostName = "localhost"
     static private var _serverPort = 4000
     static private var _yautjaConfig = YautjaServiceConfiguration()
     static private var serialQueue = DispatchQueue(label: "ServerSessionState.serialQueue")
+
+    static fileprivate var serverHostName: String {
+        get {
+            return self.serialQueue.sync { self._serverHostName }
+        }
+
+        set {
+            self.serialQueue.async { self._serverHostName = newValue }
+        }
+    }
 
     static fileprivate var serverPort: Int {
         get {
@@ -29,6 +40,9 @@ internal struct ServerSessionState: ParsableCommand {
         }
     }
 
+    @Option(name: .shortAndLong, help: "Enter host name")
+    internal var hostname: String?
+
     @Option(name: .shortAndLong, help: "Enter port number")
     internal var port: Int?
 
@@ -36,6 +50,10 @@ internal struct ServerSessionState: ParsableCommand {
     internal var fsRoot: String?
 
     mutating func run() throws {
+        if let hostname = self.hostname {
+            ServerSessionState.serverHostName = hostname
+        }
+
         if let port = self.port {
             ServerSessionState.serverPort = port
         }
@@ -52,6 +70,7 @@ public func configure(_ app: Application) throws {
                  "Expected valid server port 1-9999, got \(ServerSessionState.serverPort).")
 
     app.http.server.configuration.port = ServerSessionState.serverPort
+    app.http.server.configuration.hostname = ServerSessionState.serverHostName
     try routes(app)
 }
 
