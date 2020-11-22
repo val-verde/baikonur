@@ -67,23 +67,27 @@ $ sudo systemctl enable systemd-nspawn@<name>
 2. Set up environment for the swift app:
 
 ```
-$ export PACKAGE_PREFIX=/usr/local/val-verde-platform-sdk-gnu-haswell/sysroot
+$ export BUILD_TRIPLE=x86_64-linux-gnu
+$ export PACKAGE_PREFIX=/opt/val-verde-platform-sdk/gnu-haswell/sysroot/usr
 $ export PATH=${PACKAGE_PREFIX}/usr/bin:${PACKAGE_PREFIX}/usr/sbin
 $ export PATH=$PATH:/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin
-$ export LD_LIBRARY_PATH=${PACKAGE_PREFIX}/usr/lib:${PACKAGE_PREFIX}/usr/lib/swift/linux
+$ export LD_LIBRARY_PATH=${PACKAGE_PREFIX}/lib:${PACKAGE_PREFIX}/lib/swift/linux
 $ export GIT_EXEC_PATH=${PACKAGE_PREFIX}/usr/libexec/git-core
+export PYTHON_PATH=${PACKAGE_PREFIX}/usr/bin
+export PKG_CONFIG_PATH=${PACKAGE_PREFIX}/lib/pkgconfig:${PACKAGE_PREFIX}/share/pkgconfig:/usr/lib/${BUILD_TRIPLE}:/usr/share/pkgconfig
+export NODE_PATH=${PACKAGE_ROOT}/${PACKAGE_BASE_NAME}-platform-sdk/web
 ```
 3. Fetch Baikonur source code
 
 ```
 $ mkdir /root/projects
 $ cd /root/projects
-$ git clone https://github.com/val-verde/baikonur.git --branch master --single-branch .
+$ git clone https://github.com/val-verde/baikonur.git --branch val-verde-mainline --single-branch .
 ```
 4. Build & run the vapor server:
 
 ```
-$ swift build -Xswiftc -I/usr/local/val-verde-platform-sdk-gnu-haswell/sysroot/usr/include
+$ swift build -Xswiftc -I${PACKAGE_PREFIX}/include
 $ ./build/debug/baikonur --port=<CUSTOM_PORT>
 ```
 
