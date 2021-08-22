@@ -13,12 +13,13 @@ let package = Package(
     name: "baikonur",
     dependencies: [
         .package(url: "https://github.com/val-verde/vapor.git", .branch(mainlineBranch)),
-        .package(url: "https://github.com/val-verde/swift-argument-parser.git", .branch("val-verde-mainline")),
     ],
     targets: [
         .target(name: "baikonur", dependencies: [
             .product(name: "Vapor", package: "vapor"),
-            .product(name: "ArgumentParser", package: "swift-argument-parser"),
+        ],
+        linkerSettings: [
+            .linkedLibrary("ArgumentParser"),
         ]),
         .testTarget(name: "baikonurTests", dependencies: [
             .target(name: "baikonur"),
