@@ -11,6 +11,12 @@ if let _mainlineBranch = getenv("MAINLINE_BRANCH") {
 
 let package = Package(
     name: "baikonur",
+    platforms: [
+        .macOS(.v10_15),
+        .iOS(.v13),
+        .tvOS(.v13),
+        .watchOS(.v6)
+    ],
     dependencies: [
         .package(url: "https://github.com/val-verde/vapor.git", .branch(mainlineBranch)),
     ],
